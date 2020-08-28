@@ -23,5 +23,10 @@ if __name__ == '__main__':
     print(Fagner.idade)
     for filho in Fagner.filhos:
         print(filho.nome, filho.idade)
+    Fagner.sobrenome = 'Gonzaga'
+   # del Fagner.filhos
+    print(Fagner.__dict__)
+    print(Márjorie.__dict__)
+    print(Adriele.__dict__)
 
 
