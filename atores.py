@@ -92,6 +92,7 @@ class Passaro(Ator):
         self._tempo_de_lancamento = None
         self._angulo_de_lancamento = None  # radianos
 
+
     def foi_lancado(self):
         """
         Método que retorna verdaeira se o pássaro já foi lançado e falso caso contrário
