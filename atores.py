@@ -157,7 +157,6 @@ class Passaro(Ator):
         x_atual = self._x_inicial
         angulo_radianos = self._angulo_de_lancamento
         x_atual += self.velocidade_escalar * delta_t * math.cos(angulo_radianos)
-        x_atual -= (GRAVIDADE * (delta_t ** 2)) / 2
         self.x = x_atual
 
     def _esta_voando(self):
