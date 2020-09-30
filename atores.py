@@ -55,7 +55,7 @@ class Ator():
         if self.status == ATIVO and outro_ator.status == ATIVO:
             delta_x = abs(self.x - outro_ator.x)
             delta_y = abs(self.y - outro_ator.y)
-            if delta_x <= intervalo and delta_y <= intervalo:
+            if delta_x <=  intervalo and delta_y <= intervalo:
                 self.status = outro_ator.status = DESTRUIDO
 
 
@@ -99,8 +99,9 @@ class Passaro(Ator):
 
         :return: booleano
         """
-        return not self._tempo_de_lancamento is None
-
+        if self._tempo_de_lancamento is None:
+            return False
+        return True
     def colidir_com_chao(self):
         """
         Método que executa lógica de colisão com o chão. Toda vez que y for menor ou igual a 0,
@@ -128,7 +129,6 @@ class Passaro(Ator):
            delta_t= tempo - self._tempo_de_lancamento
            self._calcular_posicao_vertical(delta_t)
            self._calcular_posicao_horizontal(delta_t)
-
         return super().calcular_posicao(tempo)
 
 
@@ -151,7 +151,7 @@ class Passaro(Ator):
         angulo_radianos = self._angulo_de_lancamento
         y_atual += self.velocidade_escalar * delta_t * math.sin(angulo_radianos)
         y_atual -= (GRAVIDADE * (delta_t ** 2)) / 2
-        self.y=y_atual
+        self.y = y_atual
 
     def _calcular_posicao_horizontal(self, delta_t):
         x_atual = self._x_inicial

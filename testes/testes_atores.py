@@ -230,7 +230,7 @@ class PassaroVermelhoTests(PassaroBaseTests):
         self.assertEqual(DESTRUIDO, passaro.status, 'Deve colidir com chão sempre que y<=0')
         passaro = PassaroVermelho(1, 0)
         passaro.colidir_com_chao()
-        self.assertEqual(DESTRUIDO, passaro.status, 'Deve colidir com chão sempre que y<=0')
+         self.assertEqual(DESTRUIDO, passaro.status, 'Deve colidir com chão sempre que y<=0')
         passaro = PassaroVermelho(2, 0)
         passaro.colidir_com_chao()
         self.assertEqual(DESTRUIDO, passaro.status, 'Deve colidir com chão sempre que y<=0')

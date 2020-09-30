@@ -61,7 +61,7 @@ class Fase():
         """
         self._passaros.extend(passaros)
 
-    @property
+  #  @property
     def status(self):
         """
         Método que indica com mensagem o status do jogo
@@ -76,7 +76,7 @@ class Fase():
         """
         if not self._possui_porco_ativo():
             return VITORIA
-        elif self._possui_passaro_ativo():
+        elif self._possui_passaros_ativos():
             return EM_ANDAMENTO
         else:
             return DERROTA
@@ -93,7 +93,7 @@ class Fase():
         :param angulo: ângulo de lançamento
         :param tempo: Tempo de lançamento
         """
-        for passaro in self._passaros():
+        for passaro in self._passaros:
             if not passaro.foi_lancado():
                 passaro.lancar(angulo, tempo)
                 break
@@ -108,27 +108,27 @@ class Fase():
         :param tempo: tempo para o qual devem ser calculados os pontos
         :return: objeto do tipo Ponto
         """
-        for passaro in self.passaros:
+        for passaro in self._passaros:
             passaros.calcular_posicao(tempo)
-            for alvo in self.obstaculos + self._porcos:
+            for alvo in self._obstaculos + self._porcos:
                 passaro.colidir(alvo, self.intervalo_de_colisao)
-            passaro.colidir_com_chao( )
-        pontos=[self._transformar_em_ponto(a) for a in self._passaros+self._obstaculos+self._porcos]
+            passaro.colidir_com_chao()
+        pontos=[self._transformar_em_ponto(a) for a in self._passaros + self._obstaculos + self._porcos]
 
         return pontos
 
     def _transformar_em_ponto(self, ator):
         return Ponto(ator.x, ator.y, ator.caracter())
 
-    def possui_porco_ativo(self):
-        for porco in self.porco:
-            if porco.status == ATIVO
+    def _possui_porco_ativo(self):
+        for porco in self.porcos:
+            if porco.status == ATIVO:
                 return True
-            return False
+        return False
 
-    def possui_passaro_ativo(self):
-        for passaro in self.passaro:
-            if passaro.status == ATIVO
+    def _possui_passaros_ativos(self):
+        for passaro in self.passaros:
+            if passaro.status == ATIVO:
                 return True
-            return False
+        return False
 
