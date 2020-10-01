@@ -19,7 +19,7 @@ class AtorTestes(TestCase):
         ator = Ator()
         self.assertEqual(0, ator.x)
         self.assertEqual(0, ator.y)
-        self.assertEqual(ATIVO, ator.status)
+        self.assertEqual(ATIVO, ator.status())
         self.assertEqual('A', ator.caracter())
 
     def teste_valores_passados_por_parametro(self):
@@ -27,7 +27,7 @@ class AtorTestes(TestCase):
         ator = Ator(1, 2)
         self.assertEqual(1, ator.x)
         self.assertEqual(2, ator.y)
-        self.assertEqual(ATIVO, ator.status)
+        self.assertEqual(ATIVO, ator.status())
         self.assertEqual('A', ator.caracter())
 
     def teste_ator_posicao(self):
@@ -138,8 +138,8 @@ class AtorTestes(TestCase):
         ator.colidir(ator2)
 
         # Conferindo se status ficaram inalterados
-        self.assertEqual(status_inicial_ator, ator.status, 'Status de ator não deveria mudar')
-        self.assertEqual(status_inicial_ator_2, ator2.status, 'Status de ator2 não deveria mudar')
+        self.assertEqual(status_inicial_ator, ator.status(), 'Status de ator não deveria mudar')
+        self.assertEqual(status_inicial_ator_2, ator2.status(), 'Status de ator2 não deveria mudar')
 
 
 class ObstaculoTestes(TestCase):
@@ -743,7 +743,7 @@ class PassaroAmareloTests(PassaroBaseTests):
         self.assert_passaro_posicao(91, 1, ATIVO, passaro_amarelo, 6.26)
         self.assert_passaro_posicao(92, 0, ATIVO, passaro_amarelo, 6.29)
         passaro_amarelo.colidir_com_chao()
-        self.assertEqual(DESTRUIDO, passaro_amarelo.status)
+        self.assertEqual(DESTRUIDO, passaro_amarelo.status())
         # Código de geração de testes
 
         # for delta_t in range(0, 550):

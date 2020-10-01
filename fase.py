@@ -109,7 +109,7 @@ class Fase():
         :return: objeto do tipo Ponto
         """
         for passaro in self._passaros:
-            passaros.calcular_posicao(tempo)
+            passaro.calcular_posicao(tempo)
             for alvo in self._obstaculos + self._porcos:
                 passaro.colidir(alvo, self.intervalo_de_colisao)
             passaro.colidir_com_chao()
@@ -121,13 +121,13 @@ class Fase():
         return Ponto(ator.x, ator.y, ator.caracter())
 
     def _possui_porco_ativo(self):
-        for porco in self.porcos:
+        for _porco in self.porcos:
             if porco.status == ATIVO:
                 return True
         return False
 
     def _possui_passaros_ativos(self):
-        for passaro in self.passaros:
+        for _passaro in self.passaros:
             if passaro.status == ATIVO:
                 return True
         return False
