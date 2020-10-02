@@ -99,9 +99,7 @@ class Passaro(Ator):
 
         :return: booleano
         """
-        if self._tempo_de_lancamento is None:
-            return False
-        return True
+        return not self._tempo_de_lancamento is None
 
     def colidir_com_chao(self):
         """
@@ -132,8 +130,6 @@ class Passaro(Ator):
            self._calcular_posicao_horizontal(delta_t)
         return super().calcular_posicao(tempo)
 
-
-
     def lancar(self, angulo, tempo_de_lancamento):
         """
         Lógica que lança o pássaro. Deve armazenar o ângulo e o tempo de lançamento para posteriores cálculo.
@@ -152,7 +148,7 @@ class Passaro(Ator):
         angulo_radianos = self._angulo_de_lancamento
         y_atual += self.velocidade_escalar * delta_t * math.sin(angulo_radianos)
         y_atual -= (GRAVIDADE * (delta_t ** 2)) / 2
-        self.y = y_atual
+        self.y=y_atual
 
     def _calcular_posicao_horizontal(self, delta_t):
         x_atual = self._x_inicial
