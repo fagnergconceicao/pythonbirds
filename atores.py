@@ -55,7 +55,7 @@ class Ator():
         if self.status == ATIVO and outro_ator.status == ATIVO:
             delta_x = abs(self.x - outro_ator.x)
             delta_y = abs(self.y - outro_ator.y)
-            if delta_x <=  intervalo and delta_y <= intervalo:
+            if delta_x <= intervalo and delta_y <= intervalo:
                 self.status = outro_ator.status = DESTRUIDO
 
 
@@ -102,6 +102,7 @@ class Passaro(Ator):
         if self._tempo_de_lancamento is None:
             return False
         return True
+
     def colidir_com_chao(self):
         """
         Método que executa lógica de colisão com o chão. Toda vez que y for menor ou igual a 0,
