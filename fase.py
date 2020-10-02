@@ -121,13 +121,13 @@ class Fase():
         return Ponto(ator.x, ator.y, ator.caracter())
 
     def _possui_porco_ativo(self):
-        for _porco in self.porcos:
+        for porco in _self.porcos:
             if porco.status == ATIVO:
                 return True
         return False
 
     def _possui_passaros_ativos(self):
-        for _passaro in self.passaros:
+        for passaro in _self.passaros:
             if passaro.status == ATIVO:
                 return True
         return False
